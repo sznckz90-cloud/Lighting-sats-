@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AdEarn Bot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Monetag SDK -->
+  <script 
+    src="//libtl.com/sdk.js" 
+    data-zone="9368336" 
+    data-sdk="show_9368336">
+  </script>
+  <style>
+    /* ===== Base ===== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #121212;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 30px 15px;
+    }
+
+    /* ===== Container ===== */
+    .container {
+      background: #1f1f1f;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+      max-width: 400px;
+      width: 100%;
+      padding: 30px 25px;
+      text-align: center;
+    }
+
+    /* ===== Title & Balance ===== */
+    .title {
+      color: #00e676;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .balance {
+      color: #a5d6a7;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
+    /* ===== Buttons ===== */
+    button {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 12px 0;
+      padding: 14px 0;
+      width: 100%;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .btn-main {
+      background: #00c853;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(0,200,83,0.4);
+    }
+    .btn-main:hover {
+      background: #00e676;
+    }
+    .btn-secondary {
+      background: #333;
+      color: #ddd;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    }
+    .btn-secondary:hover {
+      background: #444;
+    }
+    .btn-main .icon,
+    .btn-secondary .icon {
+      margin-right: 8px;
+    }
+
+    /* ===== Popup ===== */
+    .popup {
+      align-items: center;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      display: none;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: center;
+      left: 0;
+      position: fixed;
+      top: 0;
+      width: 100vw;
+      z-index: 999;
+    }
+    .popup-content {
+      background: #222;
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      width: 90%;
+      max-width: 320px;
+    }
+    .popup-content h3 {
+      color: #00e676;
+      margin-bottom: 15px;
+    }
+    .popup-content p {
+      margin-bottom: 20px;
+    }
+    .popup-content button {
+      background: #00c853;
+      color: #fff;
+      padding: 10px 25px;
+      border-radius: 25px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="title"> PaidAd-Earn Crypto </div>
+    <div class="balance">Balance: <span id="balance">15000000</span> sats</div>
+
+    <button class="btn-main" onclick="watchAd()">
+      <span class="icon">💸</span>Watch Ads
+    </button>
+    <button class="btn-secondary" onclick="showPopup('Refer & Earn','Invite friends and earn bonus sats!')">
+      <span class="icon">👥</span>Refer & Earn
+    </button>
+    <button class="btn-secondary" onclick="showPopup('Withdraw','Minimum withdrawal is 50 sats.')">
+      <span class="icon">💰</span>Withdraw
+    </button>
+    <button class="btn-secondary" onclick="showPopup('Help','Complete ads to earn sats.\\nRefer friends to earn more.')">
+      <span class="icon">❓</span>Help
+    </button>
+  </div>
+
+  <div id="popup" class="popup" onclick="closePopup()">
+    <div class="popup-content" onclick="event.stopPropagation()">
+      <h3 id="popupTitle">Title</h3>
+      <p id="popupMsg">Message</p>
+      <button onclick="closePopup()">OK</button>
+    </div>
+  </div>
+
+  <script>
+    // Initialize balance
+    let balance = parseInt(localStorage.getItem('balance')) || 15;
+    document.getElementById('balance').innerText = balance;
+
+    // Popup handlers
+    function showPopup(title, msg) {
+      document.getElementById('popupTitle').innerText = title;
+      document.getElementById('popupMsg').innerText = msg;
+      document.getElementById('popup').style.display = 'flex';
+    }
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+
+    // Watch Ads logic
+    function watchAd() {
+      const btn = document.querySelector('.btn-main');
+      btn.disabled = true;
+      btn.innerText = '⏳ Watching Ad...';
+
+      if (typeof show_9368336 !== 'function') {
+        alert('🚫 Ad blocker detected or SDK failed to load.');
+        btn.disabled = false;
+        btn.innerHTML = '<span class="icon">💸</span>Watch Ads';
+        return;
+      }
+
+      show_9368336().then(() => {
+        balance += 5;
+        localStorage.setItem('balance', balance);
+        document.getElementById('balance').innerText = balance;
+        alert('🎉 Congrats! You earned 5 sats!');
+      }).catch(() => {
+        alert('⚠️ Ad skipped or failed. No reward granted.');
+      }).finally(() => {
+        btn.disabled = false;
+        btn.innerHTML = '<span class="icon">💸</span>Watch Ads';
+      });
+    }
+  </script>
+
+</body>
+</html>
