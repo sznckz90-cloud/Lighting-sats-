@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdEarn Bot - Watch Ads & Earn Money</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script async="async" data-cfasync="false" src="//pl24948267.profitablegatetocontent.com/9368336e0b73a17fad4bc6d1c1e72e6e/invoke.js"></script>
+    <div id="container-9368336e0b73a17fad4bc6d1c1e72e6e"></div>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background: #000000;
+            --foreground: #ffffff;
+            --card: #1a1a1a;
+            --card-foreground: #ffffff;
+            --primary: #00bfff;
+            --primary-dark: #0099cc;
+            --secondary: #ababab;
+            --muted: #292929;
+            --muted-foreground: #ababab;
+            --accent: #292929;
+            --destructive: #f56565;
+            --border: #292929;
+            --success: #00ff7f;
+            --warning: #ffd700;
+            --radius: 12px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: var(--background);
+            position: relative;
+            padding-bottom: 80px;
+        }
+
+        .header {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 16px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            background: rgba(26, 26, 26, 0.8);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        .balance-cards {
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .balance-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .balance-card.gradient {
+            background: linear-gradient(145deg, var(--card), var(--muted));
+            border: 1px solid transparent;
+        }
+
+        .balance-card.gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(145deg, var(--primary), var(--primary-dark));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: subtract;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: subtract;
+        }
+
+        .balance-card-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .balance-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--foreground);
+            margin-bottom: 4px;
+        }
+
+        .balance-subtitle {
+            font-size: 14px;
+            color: var(--muted-foreground);
+        }
+
+        .success {
+            color: var(--success);
+        }
+
+        .progress-section {
+            margin: 24px 16px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--muted);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--success));
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .action-buttons {
+            padding: 0 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 24px;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .btn:active:not(:disabled) {
+            transform: scale(0.95);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 191, 255, 0.3);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            box-shadow: 0 6px 16px rgba(0, 191, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--card);
+            color: var(--foreground);
+            border: 1px solid var(--border);
+        }
+
+        .reward-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 400px;
+            background: var(--card);
+            border-top: 1px solid var(--border);
+            padding: 12px 0;
+            display: flex;
+            justify-content: space-around;
+            z-index: 20;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: var(--muted-foreground);
+            min-width: 60px;
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+            background: rgba(0, 191, 255, 0.1);
+        }
+
+        .nav-item:hover {
+            background: var(--muted);
+        }
+
+        .nav-text {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            max-width: 300px;
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            border-color: var(--success);
+        }
+
+        .toast.error {
+            border-color: var(--destructive);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .page {
+            display: none;
+            min-height: calc(100vh - 80px);
+            padding: 20px 16px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .friends-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .friend-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .missions-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .mission-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .mission-card:hover {
+            border-color: var(--primary);
+        }
+
+        .mission-card.completed {
+            opacity: 0.6;
+        }
+
+        .mission-reward {
+            color: var(--success);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div>
+                        <div style="font-weight: 600;">AdEarn Bot</div>
+                        <div style="font-size: 12px; color: var(--muted-foreground);">Watch & Earn</div>
+                    </div>
+                </div>
+                <div id="userLevel" style="background: var(--muted); padding: 4px 8px; border-radius: 16px; font-size: 12px;">
+                    Level 1
+                </div>
+            </div>
+        </div>
+
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <!-- Balance Cards -->
+            <div class="balance-cards">
+                <div class="balance-card gradient">
+                    <div class="balance-card-header">
+                        <i class="fas fa-wallet"></i>
+                        <span>Withdraw Balance</span>
+                    </div>
+                    <div class="balance-value" id="withdrawBalance">$0.00000</div>
+                    <div class="balance-subtitle">Available for withdrawal</div>
+                </div>
+
+                <div class="balance-card">
+                    <div class="balance-card-header">
+                        <i class="fas fa-coins"></i>
+                        <span>Today's Earnings</span>
+                    </div>
+                    <div class="balance-value success" id="todayEarnings">$0.00000</div>
+                    <div class="balance-subtitle">Earned from watching ads</div>
+                </div>
+            </div>
+
+            <!-- Progress Section -->
+            <div class="progress-section">
+                <div class="progress-header">
+                    <span>Daily Progress</span>
+                    <span id="progressText">0/20</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button id="watchAdBtn" class="btn btn-primary">
+                    <i class="fas fa-play"></i>
+                    <span>Watch to Earn</span>
+                    <div class="reward-badge">+$0.00004</div>
+                </button>
+
+                <button id="claimEarningsBtn" class="btn btn-secondary" disabled>
+                    <i class="fas fa-gift"></i>
+                    <span>Claim Daily Earnings</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Friends Page -->
+        <div id="friendsPage" class="page">
+            <h2 style="margin-bottom: 20px;">Invite Friends</h2>
+            <div class="balance-card" style="margin-bottom: 20px; text-align: center;">
+                <h3>Referral Code</h3>
+                <div style="font-size: 20px; font-weight: 600; margin: 10px 0; color: var(--primary);">ADEARN123</div>
+                <button class="btn btn-primary" onclick="copyReferralCode()">
+                    <i class="fas fa-copy"></i>
+                    Copy Code
+                </button>
+            </div>
+            
+            <div class="friends-list" id="friendsList">
+                <div style="text-align: center; color: var(--muted-foreground); padding: 40px 0;">
+                    No friends invited yet. Share your referral code to start earning!
+                </div>
+            </div>
+        </div>
+
+        <!-- Missions Page -->
+        <div id="missionsPage" class="page">
+            <h2 style="margin-bottom: 20px;">Missions</h2>
+            <div class="missions-grid" id="missionsList">
+                <!-- Missions will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Wallet Page -->
+        <div id="walletPage" class="page">
+            <h2 style="margin-bottom: 20px;">Wallet</h2>
+            
+            <div class="balance-cards">
+                <div class="balance-card gradient">
+                    <div class="balance-card-header">
+                        <i class="fas fa-wallet"></i>
+                        <span>Total Balance</span>
+                    </div>
+                    <div class="balance-value" id="totalBalance">$0.00000</div>
+                    <div class="balance-subtitle">Available for withdrawal</div>
+                </div>
+            </div>
+
+            <div class="action-buttons" style="margin-top: 20px;">
+                <button class="btn btn-primary" onclick="withdrawFunds()">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Withdraw Funds</span>
+                </button>
+                
+                <div style="text-align: center; margin-top: 20px; color: var(--muted-foreground); font-size: 14px;">
+                    Minimum withdrawal: $1.00
+                </div>
+            </div>
+        </div>
+
+        <!-- More Page -->
+        <div id="morePage" class="page">
+            <h2 style="margin-bottom: 20px;">More</h2>
+            
+            <div class="missions-grid">
+                <div class="mission-card" onclick="showLanguageSelector()">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-weight: 600;">Language</div>
+                            <div style="font-size: 14px; color: var(--muted-foreground);">Change app language</div>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                
+                <div class="mission-card" onclick="showSettings()">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-weight: 600;">Settings</div>
+                            <div style="font-size: 14px; color: var(--muted-foreground);">App preferences</div>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                
+                <div class="mission-card" onclick="showAbout()">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-weight: 600;">About</div>
+                            <div style="font-size: 14px; color: var(--muted-foreground);">Version 1.0.0</div>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="#" class="nav-item active" onclick="showPage('home', this)">
+                <i class="fas fa-home"></i>
+                <span class="nav-text">Home</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showPage('friends', this)">
+                <i class="fas fa-users"></i>
+                <span class="nav-text">Friends</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showPage('missions', this)">
+                <i class="fas fa-trophy"></i>
+                <span class="nav-text">Missions</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showPage('wallet', this)">
+                <i class="fas fa-wallet"></i>
+                <span class="nav-text">Wallet</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showPage('more', this)">
+                <i class="fas fa-ellipsis-h"></i>
+                <span class="nav-text">More</span>
+            </a>
+        </div>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="toast">
+            <div id="toastTitle" style="font-weight: 600; margin-bottom: 4px;"></div>
+            <div id="toastMessage" style="font-size: 14px; color: var(--muted-foreground);"></div>
+        </div>
+    </div>
+
+    <script>
+        // User Data Management
+        const defaultUserData = {
+            withdrawBalance: 0,
+            dailyEarnings: 0,
+            adsWatched: 0,
+            dailyLimit: 20,
+            referralsCount: 0,
+            referralEarnings: 0,
+            level: 1,
+            language: 'en',
+            lastAdWatch: 0
+        };
+
+        let userData = { ...defaultUserData };
+
+        // Monetag Integration
+        class MonetogIntegration {
+            constructor() {
+                this.isLoaded = false;
+                this.init();
+            }
+
+            init() {
+                const checkLoaded = () => {
+                    if (typeof window.show_9368336 === 'function') {
+                        this.isLoaded = true;
+                        console.log('MONETAG: Integration ready');
+                        return true;
+                    }
+                    return false;
+                };
+
+                if (checkLoaded()) return;
+
+                const pollInterval = setInterval(() => {
+                    if (checkLoaded()) {
+                        clearInterval(pollInterval);
+                    }
+                }, 1000);
+
+                setTimeout(() => {
+                    clearInterval(pollInterval);
+                    if (!this.isLoaded) {
+                        console.warn('Monetag script failed to load');
+                    }
+                }, 30000);
+            }
+
+            async showAd() {
+                return new Promise((resolve, reject) => {
+                    if (!this.isLoaded || typeof window.show_9368336 !== 'function') {
+                        // Fallback for development/testing
+                        setTimeout(() => {
+                            resolve();
+                        }, 2000);
+                        return;
+                    }
+
+                    try {
+                        window.show_9368336();
+                        setTimeout(() => {
+                            resolve();
+         
